@@ -20,9 +20,10 @@ node {
   }
 
   stage('Deploy') {
-    withEnv(['VOLUME=pwd()/sources:/src',
+    withEnv(['VOLUME=/var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src',
              'IMAGE=cdrx/pyinstaller-linux:python2']) {
       try {
+          echo pwd()
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile add2vals.py'" 
       } finally {
         if (currentBuild == 'SUCCESS') {
