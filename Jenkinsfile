@@ -34,19 +34,14 @@ node {
     environment {
       VOLUME = '$(pwd)/sources:/src'
       IMAGE = 'cdrx/pyinstaller-linux:python2'
-      // PATH = 'test123'
     }
     try {
-        // unstash(name: 'compiled-results') 
-        echo PATH
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'" 
-      // sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'"
     } finally {
       // if (currentBuild == 'SUCCESS') {
-        echo PATH
         // archiveArtifacts artifacts: "${PATH}/sources/dist/add2vals"
         // archiveArtifacts artifact "${env.BUILD_ID}/sources/dist/add2vals"
-        sh "docker run --rm -v $(pwd)/sources:/src ${IMAGE} 'rm -rf build dist'"
+        sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
       // }
     }  
   }
