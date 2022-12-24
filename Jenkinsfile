@@ -33,7 +33,7 @@ node {
         sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
       }
     } finally {
-      if (currentResult == 'SUCCESS') {
+      if (currentBuild == 'SUCCESS') {
         archiveArtifacts 'dist/add2vals'
       }
     }
