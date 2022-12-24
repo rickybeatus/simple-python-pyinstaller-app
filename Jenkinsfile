@@ -34,11 +34,12 @@ node {
     try {
       sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src cdrx/pyinstaller-linux:python2 \'pyinstaller -F add2vals.py\''
     } finally {
-      echo currentBuild
-      if (currentBuild == 'SUCCESS') {
-        archiveArtifacts artifacts: 'sources/add2vals.py', followSymlinks: false
-	      sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src cdrx/pyinstaller-linux:python2 \'rm -rf build dist\''
-      }
+      archiveArtifacts artifacts: 'dist/add2vals', fingerprint: true
+      // if (currentBuild == 'SUCCESS') {
+      //   archiveArtifacts artifacts: 'dist/add2vals'
+      //   archiveArtifacts artifacts: 'sources/add2vals.py', followSymlinks: false
+	    //   sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src cdrx/pyinstaller-linux:python2 \'rm -rf build dist\''
+      // }
     }  
   }
 }
