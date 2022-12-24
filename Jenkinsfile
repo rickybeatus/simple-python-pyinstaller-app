@@ -23,7 +23,6 @@ node {
     withEnv(["VOLUME=${pwd()}/sources:/src",
              'IMAGE=cdrx/pyinstaller-linux:python2']) {
       try {
-          echo pwd()
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile add2vals.py'" 
       } finally {
         if (currentBuild == 'SUCCESS') {
