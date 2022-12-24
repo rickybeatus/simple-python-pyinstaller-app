@@ -39,7 +39,7 @@ node {
       sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'"
     } finally {
       // if (currentBuild == 'SUCCESS') {
-        archiveArtifacts artifacts: "dist/add2vals", fingerprint: true
+        archiveArtifacts artifacts: "4/sources/dist/add2vals", fingerprint: true
         // archiveArtifacts artifact "${env.BUILD_ID}/sources/dist/add2vals"
         // sh "docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src cdrx/pyinstaller-linux:python2 'rm -rf build dist'"
       // }
