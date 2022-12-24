@@ -29,6 +29,7 @@ node {
           archiveArtifacts artifacts: "sources/dist/add2vals"
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
         }
+        sleep time: 1, unit: 'MINUTES'
       }  
     }
   }
