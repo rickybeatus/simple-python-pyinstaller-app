@@ -20,10 +20,10 @@ node {
   }
 
   stage('Deploy') {
-    withEnv(['VOLUME=/var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources',
+    withEnv(['VOLUME=/var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src',
              'IMAGE=cdrx/pyinstaller-linux:python2']) {
     try {
-        sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'" 
+        sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile add2vals.py'" 
     } finally {
       // if (currentBuild == 'SUCCESS') {
         // archiveArtifacts artifacts: "${PATH}/sources/dist/add2vals"
