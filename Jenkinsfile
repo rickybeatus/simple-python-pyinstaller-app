@@ -21,12 +21,12 @@ node {
 
   stage('Deploy') {
     try {
-        sh "docker run --rm -v (pwd)/sources:/src cdrx/pyinstaller-linux:python2 'pyinstaller --onefile sources/add2vals.py'" 
+        sh "docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src cdrx/pyinstaller-linux:python2 'pyinstaller --onefile sources/add2vals.py'" 
     } finally {
       // if (currentBuild == 'SUCCESS') {
         // archiveArtifacts artifacts: "${PATH}/sources/dist/add2vals"
         // archiveArtifacts artifact "${env.BUILD_ID}/sources/dist/add2vals"
-        sh "docker run --rm -v (pwd)/sources:/src cdrx/pyinstaller-linux:python2 'rm -rf build dist'"
+        sh "docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src cdrx/pyinstaller-linux:python2 'rm -rf build dist'"
       // }
     }  
   }
