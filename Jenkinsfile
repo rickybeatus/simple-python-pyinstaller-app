@@ -34,7 +34,7 @@ node {
     environment {
       VOLUME = '$(pwd)/sources:/src'
       IMAGE = 'cdrx/pyinstaller-linux:python2'
-      PATH = ''
+      PATH = 'test123'
     }
     try {
         // unstash(name: 'compiled-results') 
