@@ -38,11 +38,10 @@ node {
     try {
       sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
     } finally {
-      echo "finally section"
-      if (currentBuild == 'SUCCESS') {
+      // if (currentBuild == 'SUCCESS') {
         archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-      }
+      // }
     }  
   }
 }
