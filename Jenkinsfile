@@ -28,16 +28,15 @@ node {
     }
   }
   stage('Deploy') {
-    echo 'This will always run'
+    try {
       docker.image('cdrx/pyinstaller-linux:python2').inside {
-        //sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
+        sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-wilson_oey/sources:/src cdrx/pyinstaller-linux:python2 \'pyinstaller -F add2vals.py\''
       }
-    // try {
-    // } finally {
-    //   // if (currentBuild == 'SUCCESS') {
-    //   //   archiveArtifacts 'dist/add2vals'
-    //   // }
-    // }
-    //   echo 'This will always run'
+    } finally {
+      if (currentBuild == 'SUCCESS') {
+        echo 'This will always run'
+        // archiveArtifacts 'dist/add2vals'
+      }
+    }
   }
 }
