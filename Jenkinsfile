@@ -27,9 +27,9 @@ node {
       junit 'test-reports/results.xml'
     }
   }
-  // stage('Manual Approval') {
-  //   input(message:"Lanjutkan ke tahap Deploy?")
-  // }
+  stage('Manual Approval') {
+    input(message:"Lanjutkan ke tahap Deploy?")
+  }
   // stage('Deploy') {
   //   // try {
   //   //   docker.image('cdrx/pyinstaller-linux:python2').inside {
