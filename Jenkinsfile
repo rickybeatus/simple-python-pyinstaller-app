@@ -46,7 +46,7 @@ node {
         echo PATH
         // archiveArtifacts artifacts: "${PATH}/sources/dist/add2vals"
         // archiveArtifacts artifact "${env.BUILD_ID}/sources/dist/add2vals"
-        sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+        sh "docker run --rm -v $(pwd)/sources:/src ${IMAGE} 'rm -rf build dist'"
       // }
     }  
   }
