@@ -27,9 +27,9 @@ node {
       } finally {
         if (currentBuild == 'SUCCESS') {
           archiveArtifacts artifacts: "sources/dist/add2vals"
-          sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
         }
-        sleep time: 1, unit: 'MINUTES'
+        sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
+        // sleep time: 1, unit: 'MINUTES'
       }  
     }
   }
