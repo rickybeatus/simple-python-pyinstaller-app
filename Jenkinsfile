@@ -37,7 +37,7 @@ node {
     }
     try {
       dir(path: env.BUILD_ID) { 
-        unstash(name: 'compiled-results') 
+        // unstash(name: 'compiled-results') 
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'" 
       }
       // sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'"
