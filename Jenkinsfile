@@ -33,7 +33,7 @@ node {
   stage('Deploy') {
     try {
       sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src'
-      sh 'cdrx/pyinstaller-linux:python2'
+      sh 'docker run cdrx/pyinstaller-linux:python2'
       sh 'pyinstaller --onefile sources/add2vals.py'
     } finally {
       archiveArtifacts artifacts: 'dist/add2vals.py', fingerprint: true
