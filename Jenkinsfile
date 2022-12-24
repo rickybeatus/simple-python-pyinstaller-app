@@ -37,11 +37,9 @@ node {
       PATH = ''
     }
     try {
-      dir(${PATH}) { 
         // unstash(name: 'compiled-results') 
         echo PATH
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'" 
-      }
       // sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'"
     } finally {
       // if (currentBuild == 'SUCCESS') {
