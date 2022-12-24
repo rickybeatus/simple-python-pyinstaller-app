@@ -32,7 +32,7 @@ node {
   }
   stage('Deploy') {
     try {
-      withDockerContainer('qnib/pytest') {}
+      withDockerContainer('cdrx/pyinstaller-linux:python2') {}
       // sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src'
       // sh 'docker run cdrx/pyinstaller-linux:python2'
       // sh 'pyinstaller --onefile sources/add2vals.py'
