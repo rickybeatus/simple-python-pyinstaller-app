@@ -27,16 +27,16 @@ node {
       junit 'test-reports/results.xml'
     }
   }
-  // stage('Deploy') {
-  //   try {
-  //     docker.image('cdrx/pyinstaller-linux:python2').inside {
-  //       sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
-  //     }
-  //   } finally {
-  //     // if (currentBuild == 'SUCCESS') {
-  //     //   archiveArtifacts 'dist/add2vals'
-  //     // }
-  //     echo 'This will always run'
-  //   }
-  // }
+  stage('Deploy') {
+    // try {
+    //   docker.image('cdrx/pyinstaller-linux:python2').inside {
+    //     sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
+    //   }
+    // } finally {
+    //   // if (currentBuild == 'SUCCESS') {
+    //   //   archiveArtifacts 'dist/add2vals'
+    //   // }
+    // }
+      echo 'This will always run'
+  }
 }
