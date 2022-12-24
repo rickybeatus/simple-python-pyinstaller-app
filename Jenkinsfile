@@ -39,17 +39,16 @@ node {
     try {
       dir(${PATH}) { 
         // unstash(name: 'compiled-results') 
-        echo ${PATH}
+        echo PATH
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'" 
       }
       // sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'"
     } finally {
       // if (currentBuild == 'SUCCESS') {
-        dir(${PATH}) { 
-        archiveArtifacts artifacts: "${PATH}/sources/dist/add2vals"
+        echo PATH
+        // archiveArtifacts artifacts: "${PATH}/sources/dist/add2vals"
         // archiveArtifacts artifact "${env.BUILD_ID}/sources/dist/add2vals"
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-        }
       // }
     }  
   }
