@@ -36,7 +36,7 @@ node {
       IMAGE = 'cdrx/pyinstaller-linux:python2'
     }
     try {
-      sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
+      sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile sources/add2vals.py'"
     } finally {
       // if (currentBuild == 'SUCCESS') {
         archiveArtifacts artifacts: "sources/dist/add2vals", fingerprint: true
