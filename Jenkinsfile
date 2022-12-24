@@ -34,7 +34,7 @@ node {
     environment {
       VOLUME = '$(pwd)/sources:/src'
       IMAGE = 'cdrx/pyinstaller-linux:python2'
-      PATH = env.BUILD_ID
+      PATH = ''
     }
     try {
       dir(${PATH}) { 
