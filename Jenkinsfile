@@ -31,8 +31,12 @@ node {
     input(message:"Lanjutkan ke tahap Deploy?")
   }
   stage('Deploy') {
+    environment {
+      VOLUME = '/var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src'
+      IMAGE = 'cdrx/pyinstaller-linux:python2'
+    }
     try {
-      withDockerContainer('cdrx/pyinstaller-linux:python2') {}
+      sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'"
       // sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src'
       // sh 'docker run cdrx/pyinstaller-linux:python2'
       // sh 'pyinstaller --onefile sources/add2vals.py'
