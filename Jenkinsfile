@@ -29,9 +29,9 @@ node {
   }
   stage('Deploy') {
     try {
-      docker.image('cdrx/pyinstaller-linux:python2').inside {
         sh 'docker run --rm -v /var/jenkins_home/workspace/submission-cicd-pipeline-wilson_oey/sources:/src cdrx/pyinstaller-linux:python2 \'pyinstaller -F add2vals.py\''
-      }
+      // docker.image('cdrx/pyinstaller-linux:python2').inside {
+      // }
     } finally {
       if (currentBuild == 'SUCCESS') {
         echo 'This will always run'
