@@ -20,7 +20,7 @@ node {
   }
 
   stage('Deploy') {
-    withEnv(['VOLUME=/var/jenkins_home/workspace/submission-cicd-pipeline-ricky_ritonga/sources:/src',
+    withEnv(['VOLUME=${pwd()}/sources:/src',
              'IMAGE=cdrx/pyinstaller-linux:python2']) {
       try {
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile add2vals.py'" 
@@ -29,7 +29,7 @@ node {
           archiveArtifacts artifacts: "sources/dist/add2vals"
         }
         sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
-        sleep time: 1, unit: 'MINUTES'
+        // sleep time: 1, unit: 'MINUTES'
       }  
     }
   }
