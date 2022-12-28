@@ -1,6 +1,7 @@
 node {
   stage('Build') {
     docker.image('python:2-alpine').inside {
+		  checkout scm
       sh 'python -m py_compile sources/add2vals.py sources/calc.py'
     }
   }
@@ -22,7 +23,7 @@ node {
   stage('Deploy') {
     withEnv(["VOLUME=${pwd()}/sources:/src",
              'IMAGE=cdrx/pyinstaller-linux:python2']) {
-      try { 
+      try {
           sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller --onefile add2vals.py'" 
       } finally {
         if (currentBuild.currentResult == 'SUCCESS') {
